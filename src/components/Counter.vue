@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div><h2>Counter</h2></div>
     <div>{{ countMessage }}</div>
     <button @click="count++">クリック！</button>
     <button @click="count = 0">リセット！</button>
