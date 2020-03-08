@@ -9,22 +9,22 @@
 
       <button @click="addItem" v-bind:disabled="isNameEmpty">追加！</button>
     </div>
-    <div v-for="(item, index) in items" :key="item.name">
+    <div v-for="item in todoItems" :key="item.name">
       <div class="item" v-if="!item.done">
         <div class="name">
           名前: {{ item.name }}
-          <button @click="switchDone(index)">完了した！</button>
-          <button @click="deleteItem(index)">削除</button>
+          <button @click="switchDone(item.id)">完了した！</button>
+          <button @click="deleteItem(item.id)">削除</button>
         </div>
       </div>
     </div>
     <div>Done<button @click="deleteDone">まとめて削除</button></div>
-    <div v-for="(item, index) in items" :key="item.name">
+    <div v-for="item in doneItems" :key="item.name">
       <div class="item" v-if="item.done">
         <div class="name">
           名前: {{ item.name }}
-          <button @click="switchDone(index)">実は未完…</button>
-          <button @click="deleteItem(index)">削除</button>
+          <button @click="switchDone(item.id)">実は未完…</button>
+          <button @click="deleteItem(item.id)">削除</button>
         </div>
       </div>
     </div>
@@ -36,21 +36,32 @@ export default {
   data() {
     return {
       items: [
-        { name: "ToDoリストを作る", done: false },
-        { name: "もふもふする", done: true }
+        { name: "ToDoリストを作る", done: false ,id : 0},
+        { name: "もふもふする", done: true,id:1 }
       ],
-      newItem: { name: "", done: false }
+      nextId:2,
+      newItem: { name: "", done: false ,id:2}
     };
   },
   methods: {
     addItem() {
       this.items.push(this.newItem);
-      this.newItem = { name: "", done: false };
+      this.nextId++;
+      this.newItem = { name: "", done: false ,id:this.nextId};
     },
-    switchDone(index) {
+    findItemIndex(id){
+      for (let i = 0; i < this.items.length; i++) {
+        if (this.items[i].id==id) {
+          return i;
+        }
+      }
+    },
+    switchDone(id) {
+      let index = this.findItemIndex(id);
       this.items[index].done = !this.items[index].done;
     },
-    deleteItem(index) {
+    deleteItem(id) {
+      let index = this.findItemIndex(id);
       this.items.splice(index, 1);
     },
     deleteDone() {
@@ -65,6 +76,24 @@ export default {
   computed: {
     isNameEmpty() {
       return this.newItem.name == "";
+    },
+    todoItems() {
+      let todos = [];
+      for (let i = 0; i < this.items.length; i++) {
+        if (!this.items[i].done) {
+          todos.push(this.items[i]);
+        }
+      }
+      return todos;
+    },
+    doneItems() {
+      let dones = [];
+      for (let i = 0; i < this.items.length; i++) {
+        if (this.items[i].done) {
+          dones.push(this.items[i]);
+        }
+      }
+      return dones;
     }
   }
 };
