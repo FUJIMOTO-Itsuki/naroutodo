@@ -40,8 +40,8 @@ export default {
   data() {
     return {
       items: [
-        { name: "ToDoリストを作る", done: false, id: 0 },
-        { name: "もふもふする", done: true, id: 1 }
+        { name: "ToDoリストを作る", done: true, id: 0 },
+        { name: "もふもふする", done: false, id: 1 }
       ],
       nextId: 2,
       newItem: { name: "", done: false, id: 2 }
