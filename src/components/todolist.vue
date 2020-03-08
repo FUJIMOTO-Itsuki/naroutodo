@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div>Done</div>
+    <div>Done<button @click="deleteDone">まとめて削除</button></div>
     <div v-for="(item, index) in items" :key="item.name">
       <div class="item" v-if="item.done">
         <div class="name">
@@ -36,8 +36,8 @@ export default {
   data() {
     return {
       items: [
-        { name: "りんご", done: false },
-        { name: "たまご", done: true }
+        { name: "ToDoリストを作る", done: false },
+        { name: "もふもふする", done: true }
       ],
       newItem: { name: "", done: false }
     };
@@ -52,6 +52,14 @@ export default {
     },
     deleteItem(index) {
       this.items.splice(index, 1);
+    },
+    deleteDone() {
+      for (let i = 0; i < this.items.length; i++) {
+        if (this.items[i].done) {
+          this.items.splice(i, 1);
+          i--;
+        }
+      }
     }
   },
   computed: {
