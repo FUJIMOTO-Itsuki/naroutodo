@@ -3,12 +3,14 @@
     <h1>{{ msg }}</h1>
     <counter />
     <item-list />
+    <todo-list />
   </div>
 </template>
 
 <script>
 import Counter from "./Counter.vue";
 import ItemList from "./ItemList.vue";
+import TodoList from "./todolist";
 export default {
   name: "HelloWorld",
   props: {
@@ -16,7 +18,8 @@ export default {
   },
   components: {
     Counter,
-    ItemList
+    ItemList,
+    TodoList
   }
 };
 </script>
