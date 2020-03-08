@@ -36,22 +36,22 @@ export default {
   data() {
     return {
       items: [
-        { name: "ToDoリストを作る", done: false ,id : 0},
-        { name: "もふもふする", done: true,id:1 }
+        { name: "ToDoリストを作る", done: false, id: 0 },
+        { name: "もふもふする", done: true, id: 1 }
       ],
-      nextId:2,
-      newItem: { name: "", done: false ,id:2}
+      nextId: 2,
+      newItem: { name: "", done: false, id: 2 }
     };
   },
   methods: {
     addItem() {
       this.items.push(this.newItem);
       this.nextId++;
-      this.newItem = { name: "", done: false ,id:this.nextId};
+      this.newItem = { name: "", done: false, id: this.nextId };
     },
-    findItemIndex(id){
+    findItemIndex(id) {
       for (let i = 0; i < this.items.length; i++) {
-        if (this.items[i].id==id) {
+        if (this.items[i].id == id) {
           return i;
         }
       }
