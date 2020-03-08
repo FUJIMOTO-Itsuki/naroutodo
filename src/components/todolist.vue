@@ -14,7 +14,7 @@
     <div v-for="item in todoItems" :key="item.name">
       <div class="item" v-if="!item.done">
         <div class="name">
-          名前: {{ item.name }}
+          #{{ item.id }}: {{ item.name }}
           <button @click="switchDone(item.id)">完了した！</button>
           <button @click="deleteItem(item.id)">削除</button>
         </div>
@@ -26,7 +26,7 @@
     <div v-for="item in doneItems" :key="item.name">
       <div class="item" v-if="item.done">
         <div class="name">
-          名前: {{ item.name }}
+          #{{ item.id }}: {{ item.name }}
           <button @click="switchDone(item.id)">実は未完…</button>
           <button @click="deleteItem(item.id)">削除</button>
         </div>
