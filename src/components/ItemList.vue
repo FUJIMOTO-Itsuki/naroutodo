@@ -5,6 +5,7 @@
       <div class="item" v-bind:class="{ over500: item.price >= 500 }">
         <div class="name">名前: {{ item.name }}</div>
         <div class="price">{{ item.price }} 円</div>
+        <div v-if="item.price >= 10000">とてもたか〜い</div>
       </div>
     </div>
     <div>
