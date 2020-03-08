@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div>TodoList</div>
+    <div><h2>TodoList</h2></div>
     <div>
-      ToDo<label>
-        タスク名
-        <input type="text" v-model="newItem.name" />
-      </label>
+      <h3>
+        ToDo
+        <label>
+          <input type="text" v-model="newItem.name" />
+        </label>
 
-      <button @click="addItem" v-bind:disabled="isNameEmpty">追加！</button>
+        <button @click="addItem" v-bind:disabled="isNameEmpty">追加！</button>
+      </h3>
     </div>
     <div v-for="item in todoItems" :key="item.name">
       <div class="item" v-if="!item.done">
@@ -18,7 +20,9 @@
         </div>
       </div>
     </div>
-    <div>Done<button @click="deleteDone">まとめて削除</button></div>
+    <div>
+      <h3>Done <button @click="deleteDone">まとめて削除</button></h3>
+    </div>
     <div v-for="item in doneItems" :key="item.name">
       <div class="item" v-if="item.done">
         <div class="name">

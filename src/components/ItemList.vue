@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>ItemList</div>
+    <div><h2>ItemList</h2></div>
     <div v-for="item in items" :key="item.name">
       <div class="item" v-bind:class="{ over500: item.price >= 500 }">
         <div class="name">名前: {{ item.name }}</div>
